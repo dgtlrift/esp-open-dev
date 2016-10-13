@@ -1,0 +1,10 @@
+[submodule "esp-open-rtos"]
+	path = esp-open-rtos
+	url = https://github.com/dgtlrift/esp-open-rtos.git
+[submodule "esp-open-sdk"]
+	path = esp-open-sdk
+	url = https://github.com/pfalcon/esp-open-sdk.git
+[submodule "qemu"]
+	path = qemu
+	url = https://github.com/OSLL/qemu-xtensa.git
+	branch = xtensa-esp8266
