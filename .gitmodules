@@ -6,7 +6,7 @@
 	url = https://github.com/pfalcon/esp-open-sdk.git
 [submodule "qemu"]
 	path = qemu
-	url = https://github.com/OSLL/qemu-xtensa.git
+	url = https://github.com/dgtlrift/qemu-xtensa.git
 	branch = xtensa-esp8266
 [submodule "qemu-xtensa"]
 	path = qemu-xtensa
