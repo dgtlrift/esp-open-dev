@@ -1,14 +1,32 @@
 .PHONY:	all update
 
+GIT_VERBOSE=true
+
+ifdef V
+ Q :=
+ vecho = @echo
+ ifeq ("$(V)","0")
+  Q := @
+  vecho = @true
+ else ifeq ("$(V)","2")
+  GIT_VERBOSE=export GIT_TRACE=2
+ endif
+else
+ Q := @
+ vecho = @true
+endif
+
 all: update infrastructure
 
 update: infrastructure
-	git pull
-	git submodule sync
+	$(Q)		\
+	$(GIT_VERBOSE)	;\
+	git pull	&&	\
+	git submodule sync	&&	\
 	git submodule update --init --recursive
 
 infrastructure:
-	sudo apt-get install	\
+	$(Q)sudo apt-get install	\
 		make	\
 		unrar-free	\
 		autoconf	\
