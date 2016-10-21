@@ -18,7 +18,7 @@ endif
 
 all: update infrastructure
 
-update: infrastructure
+update:
 	$(Q)		\
 	$(GIT_VERBOSE)	;\
 	git pull	&&	\
