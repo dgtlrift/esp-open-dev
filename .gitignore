@@ -40,3 +40,5 @@ qemu/roms/SLOF
 qemu/roms/ipxe
 qemu/roms/seabios
 qemu
+
+local
