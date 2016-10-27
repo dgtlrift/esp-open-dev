@@ -8,7 +8,3 @@
 	path = qemu
 	url = https://github.com/dgtlrift/qemu-xtensa.git
 	branch = xtensa-esp8266
-[submodule "qemu-xtensa"]
-	path = qemu-xtensa
-	url = https://github.com/dgtlrift/qemu-xtensa.git
-	branch = xtensa-esp8266
