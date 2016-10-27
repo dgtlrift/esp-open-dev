@@ -16,6 +16,10 @@ else
  vecho = @true
 endif
 
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+current_path:= $(patsubst %/,%,$(dir $(mkfile_path)))
+current_dir := $(notdir $(current_path))
+
 all: update infrastructure
 
 update:
@@ -52,4 +56,34 @@ infrastructure:
 		wget	\
 		bzip2	\
 		libtool-bin
+
+qemu-xtensa: qemu
+	$(Q)	\
+	mkdir -p $(@)			&&	\
+	cd $(@)				&&	\
+	../qemu/configure			\
+		--prefix=$(current_path)/local	\
+		--target-list=xtensa-softmmu	\
+		--disable-werror 	&&	\
+	make				&&	\
+	make install
+
+.PHONY:	esp-open-rtos
+esp-open-sdk:	Makefile
+	$(Q)					\
+	cd $(@)				&&	\
+	$(MAKE)					\
+		toolchain			\
+		esptool				\
+		libhal				\
+		STANDALONE=n
+
+#	export PATH=/home/jim/project/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+
+esp-open-rtos:
+	$(Q)			\
+	cd $(@)		&&	\
+	export PATH=$(current_path)/esp-open-sdk/xtensa-lx106-elf/bin:$${PATH}	&&	\
+	echo $${PATH}	&&	\
+	$(MAKE) simulate -C examples/http_get
 
